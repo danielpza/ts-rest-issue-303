@@ -5,7 +5,7 @@ const c = initContract();
 interface Post {}
 
 export const contract = c.router({
-  createPost: {
+  omitBody: {
     method: "POST",
     path: "/posts",
     responses: {
