@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "node16",
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["./index.ts"],
+  "exclude": ["node_modules"]
+}
