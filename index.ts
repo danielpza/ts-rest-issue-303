@@ -1,17 +1,21 @@
 import { initContract } from "@ts-rest/core";
+import { initQueryClient } from "@ts-rest/react-query";
 
 const c = initContract();
 
-interface Post {}
-
-export const contract = c.router({
-  omitBody: {
-    method: "POST",
-    path: "/posts",
+export const router = c.router({
+  getPost: {
+    method: "GET",
+    path: `/posts`,
     responses: {
-      201: c.type<Post>(),
+      200: c.type<any>(),
     },
-    // body: c.type<{ title: string }>(),
-    summary: "Create a post",
   },
 });
+
+export const client = initQueryClient(router, {
+  baseUrl: "http://localhost:3333",
+  baseHeaders: {},
+});
+
+client.getPost.useQuery(["posts"], {});
